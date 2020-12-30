@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./scripts.js"></script>
+</head>
+
+<style>
+    .main-div {
+        margin-left: 30vw;
+        margin-top: 15vh;
+    }
+
+    textarea {
+        padding: 10px;
+        border-radius: 4px;
+        width: 35vw;
+    }
+
+    button {
+        width: 125px;
+        height: 36px;
+        border: none;
+        background-color: rgb(224, 224, 224);
+        border-radius: 2px;
+        cursor: copy;
+    }
+
+    button:hover {
+        background-color: black;
+        color: white;
+    }
+
+    #text-output {
+        width: 35vw;
+        min-height: 50px;
+        background-color: rgb(255, 246, 235);
+        padding: 10px 10px 10px 16px;
+        border-radius: 4px;
+    }
+
+    @media (max-width: 600px) {
+        .main-div {
+            margin: 5vh 10px 5vh 10px;
+        }
+
+        textarea {
+            width: 80vw;
+        }
+
+        #text-output {
+            width: 80vw;
+        }
+
+        button {
+            margin-bottom: 4px;
+        }
+    }
+
+    /* SnackBar */
+    #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 12px 8px;
+        border-radius: 4px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+    }
+
+    #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    @-webkit-keyframes fadein {
+        from {
+            bottom: 0;
+            opacity: 0;
+        }
+
+        to {
+            bottom: 30px;
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadein {
+        from {
+            bottom: 0;
+            opacity: 0;
+        }
+
+        to {
+            bottom: 30px;
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fadeout {
+        from {
+            bottom: 30px;
+            opacity: 1;
+        }
+
+        to {
+            bottom: 0;
+            opacity: 0;
+        }
+    }
+
+    @keyframes fadeout {
+        from {
+            bottom: 30px;
+            opacity: 1;
+        }
+
+        to {
+            bottom: 0;
+            opacity: 0;
+        }
+    }
+</style>
+
+<body>
+    <div class="main-div"
+        style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+        Text Input<br><br>
+
+        <textarea id='text-input' rows='6'></textarea>
+
+        <br><br>
+        <button onclick="textFormat()">Text Format</button>
+        <button onclick="textBold()"><b>Text Bold</b></button>
+        <button onclick="textItalic()"><i>Text Italic</i></button>
+
+        <br><br>Text Output
+        <p id="text-output"></p>
+        <button onclick="copyToClip(document.getElementById('text-output').innerHTML)">
+            📄 Quick Copy
+        </button>
+        <div id="snackbar">Copied to clipboard</div>
+
+    </div>
+
+
+</body>
+
+</html>
